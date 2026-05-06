@@ -2,7 +2,8 @@
 
 This is a sophisticated RAG (Retrieval-Augmented Generation) application designed with a minimalist, editorial aesthetic inspired by Claude. It allows users to upload multiple PDF documents and engage in context-aware conversations, receiving precise answers with full source citations and relevance ranking.
 
-
+## Screenshot
+![alt text](image.png)
 
 ## 🚀 Features
 
