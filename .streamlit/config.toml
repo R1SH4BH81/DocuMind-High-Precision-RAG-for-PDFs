@@ -1,0 +1,14 @@
+[server]
+# Set to 'none' to avoid the crash when Streamlit tries to watch torch modules
+# Alternatively, 'poll' can be used if you still want auto-reload
+fileWatcherType = "none"
+
+[browser]
+gatherUsageStats = false
+
+[theme]
+primaryColor = "#D97757"
+backgroundColor = "#F9F9F8"
+secondaryBackgroundColor = "#F0EFE9"
+textColor = "#2C2C2A"
+font = "serif"
