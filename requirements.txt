@@ -14,3 +14,4 @@ streamlit==1.45.0
 torch==2.7.0
 transformers==4.51.3
 llama-cpp-python>=0.3.0
+langchain-ollama==0.2.3

@@ -74,7 +74,7 @@ def create_qa_chain(documents, embedding_model):
     )
 
     qa_chain = ConversationalRetrievalChain.from_llm(
-        llm=get_llm(use_cloud=True),
+        llm=get_llm(use_cloud=st.session_state.get("use_cloud", True)),
         retriever=vector_store.as_retriever(search_kwargs={"k": 5}),
         memory=get_memory(),
         return_source_documents=True,
@@ -258,11 +258,27 @@ def main():
             st.rerun()
         
         st.divider()
+        st.subheader("Model Configuration")
+        model_choice = st.radio(
+            "Select Inference Engine",
+            ["Cloud (Gemini 2.5 Flash)", "Local (Ollama - Llama 3.2)"],
+            index=0 if st.session_state.get("use_cloud", True) else 1
+        )
+        
+        new_use_cloud = True if "Cloud" in model_choice else False
+        
+        if "use_cloud" not in st.session_state or st.session_state.use_cloud != new_use_cloud:
+            st.session_state.use_cloud = new_use_cloud
+            # Reset QA chain when model changes to re-initialize with new LLM
+            st.session_state.qa_chain = None
+            if st.session_state.get("chat_history"):
+                st.info("Model changed. Chat history will be preserved but new responses will use the selected model.")
 
     embedding_model = get_embedding_model()
     cross_encoder = get_cross_encoder()
 
     with st.sidebar:
+        st.divider()
         st.subheader("Upload Documents")
         uploaded_files = st.file_uploader(
             "Upload PDFs to start querying", type="pdf", accept_multiple_files=True, label_visibility="collapsed")
