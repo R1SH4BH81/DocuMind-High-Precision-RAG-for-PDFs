@@ -5,7 +5,7 @@ import os
 
 # MODEL_NAME = "meta-llama/Llama-3.3-70B-Instruct-Turbo-Free"
 MODEL_NAME = "gemini-2.5-flash"
-LOCAL_MODEL_PATH = "/Users/gautamnaik/models/Mistral-7B-Instruct-v0.3.Q8_0.gguf"
+LOCAL_MODEL_PATH = ""
 
 
 def get_cloud_llm():
